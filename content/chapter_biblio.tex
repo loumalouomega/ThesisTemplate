@@ -1,0 +1,26 @@
+% \printbibliography[heading=subbibliography]
+
+\addcontentsline{toc}{section}{Bibliography of chapter} %Bibliografia para el capítulo
+\printbibheading
+\begingroup
+\raggedright
+\sloppy
+%\newrefcontext[labelprefix={Book-}]
+\newrefcontext[labelprefix={Book}]
+\printbibliography[type=book,heading=subbibliography,resetnumbers=true,title={Books}]
+%\newrefcontext[labelprefix={Art-}]
+\newrefcontext[labelprefix={Art}]
+\printbibliography[type=article,heading=subbibliography,resetnumbers=true,title={Articles}]
+%\newrefcontext[labelprefix={Man-}]
+\newrefcontext[labelprefix={Man}]
+\printbibliography[type=manual,heading=subbibliography,resetnumbers=true,title={Manuals}]
+%\newrefcontext[labelprefix={Mas-}]
+\newrefcontext[labelprefix={Mas}]
+\printbibliography[type=misc,heading=subbibliography,resetnumbers=true,title={Master's thesis.}]
+%\newrefcontext[labelprefix={PhD-}]
+\newrefcontext[labelprefix={PhD}]
+\printbibliography[type=thesis,heading=subbibliography,resetnumbers=true,title={Ph.D.'s thesis}]
+%\newrefcontext[labelprefix={Onl-}]
+\newrefcontext[labelprefix={Onl}]
+\printbibliography[type=online,heading=subbibliography,resetnumbers=true,title={Online resources}]
+\endgroup

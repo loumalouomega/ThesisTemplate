@@ -1,0 +1,518 @@
+\documentclass[a4paper,10pt,leqno,graphicx,rotating,twoside]{book} % Book
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+\usepackage{luacode}
+\usepackage{graphicx,wrapfig,calc}
+\newlength\myheight
+\newlength\mydepth
+\settototalheight\myheight{Xygp}
+\settodepth\mydepth{Xygp}
+\setlength\fboxsep{0pt}
+\newcommand*\inlinegraphics[1]{%
+  \settototalheight\myheight{Xygp}%
+  \settodepth\mydepth{Xygp}%
+  \raisebox{-\mydepth}{\includegraphics[height=\myheight]{#1}}%
+}
+\graphicspath{{./images/Color/}} % Color images
+% \graphicspath{{./images/BW/}} % BW images
+\setlength\intextsep{0pt}
+\usepackage{float}
+\usepackage{subfig}
+\newsavebox{\measurebox}
+\usepackage[english]{babel}
+\usepackage{caption, subcaption}
+\usepackage[parfill]{parskip}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Sonny]{fncychap}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[sfdefault=cmbr]{isomath}
+\usepackage{extsizes}
+\usepackage{sidecap}
+
+% NOTE: Here the different glossaries are declared
+\usepackage[translate=false,acronym,nonumberlist,toc,xindy]{glossaries} %% NOT ENUMERATE
+%\usepackage[translate=false,acronym,toc,xindy]{glossaries}  %% ENUMERATE
+\setglossarysection{section}
+\newglossary[tlg]{mathsymbols}{tld}{tdn}{Mathematical symbols}
+\newglossary[tlg2]{otherterms}{tld2}{tdn2}{Other terms}
+
+% Generate the glossary
+\makeglossaries
+\renewcommand{\glstextformat}[1]{\textbf{#1}}
+\glsenablehyper
+\usepackage[multiple]{footmisc}
+\usepackage{numprint}
+\usepackage{xcolor}
+\usepackage{epigraph}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[bbgreekl]{mathbbol}
+\usepackage{setspace}
+\input{content/rgb}
+%Highligh code
+\usepackage{parcolumns}
+\usepackage{textcomp}
+% \usepackage{listings}
+\usepackage{minted}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{verylightgray}{gray}{0.85}
+
+% Space between figures and text
+\usepackage[belowskip=-15pt,aboveskip=0pt]{caption}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\newcommand{\squeezeup}{\vspace{-2.5mm}}
+
+\renewcommand{\theFancyVerbLine}{\sffamily \textcolor[rgb]{0.25,0.25,0.25}{\scriptsize \oldstylenums{\arabic{FancyVerbLine}}}}
+
+\newmintedfile[pythoncode]{python}{
+  % bgcolor=gray95,
+  % bgcolor=grey100,
+  fontfamily=helvetica, % tt, courier, helvetica
+  linenos=true,
+  fontsize=\scriptsize ,
+  numberblanklines=true,
+  numbersep=12pt,
+  numbersep=5pt,
+  gobble=0,
+  frame=leftline,
+  framerule=0.4pt,
+  framesep=2mm,
+  funcnamehighlighting=true,
+  tabsize=4,
+  obeytabs=false,
+  mathescape=false
+  samepage=false, %with this setting you can force the list to appear on the same page
+  showspaces=false,
+  showtabs =false,
+  texcl=false,
+}
+
+\newmintedfile[cppcode]{c++}{
+  % bgcolor=gray95,
+  % bgcolor=grey100,
+  fontfamily=helvetica, % tt, courier, helvetica
+  linenos=true,
+  fontsize=\scriptsize ,
+  numberblanklines=true,
+  numbersep=12pt,
+  numbersep=5pt,
+  gobble=0,
+  frame=leftline,
+  framerule=0.4pt,
+  framesep=2mm,
+  funcnamehighlighting=true,
+  tabsize=4,
+  obeytabs=false,
+  mathescape=false
+  samepage=false, %with this setting you can force the list to appear on the same page
+  showspaces=false,
+  showtabs =false,
+  texcl=false,
+}
+
+\newmintedfile[matlabcode]{matlab}{
+  % bgcolor=gray95,
+  % bgcolor=grey100,
+  fontfamily=helvetica, % tt, courier, helvetica
+  linenos=true,
+  fontsize=\scriptsize ,
+  numberblanklines=true,
+  numbersep=12pt,
+  numbersep=5pt,
+  gobble=0,
+  frame=leftline,
+  framerule=0.4pt,
+  framesep=2mm,
+  funcnamehighlighting=true,
+  tabsize=4,
+  obeytabs=false,
+  mathescape=false
+  samepage=false, %with this setting you can force the list to appear on the same page
+  showspaces=false,
+  showtabs =false,
+  texcl=false,
+}
+
+%% NOTE: Decomment this in order to add a draft watermark
+% % Use the following to make modification
+% \usepackage[]{draftwatermark}
+% %\SetWatermarkAngle{12}
+% \SetWatermarkLightness{0.618}
+% \SetWatermarkScale{1.2}
+% \SetWatermarkText{DRAFT}
+
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage[hyphens]{url}
+\usepackage[bookmarks=true,breaklinks=true,colorlinks=true,allcolors=blue,linktocpage=true]{hyperref}
+\usepackage{lastpage}
+\usepackage{eurosym}
+\usepackage{tikz,tikzscale,pgfplots,pgfplotstable,adjustbox}
+% \pgfplotsset{compat=1.7}
+\pgfplotsset{compat=newest,compat/show suggested version=false}
+\usetikzlibrary{external}
+% All externalized graphics go go the \externaldirectory
+\tikzexternalize
+\tikzsetexternalprefix{metafiles/build/}
+% % Externalise only on-demand.
+% \tikzexternaldisable
+\usetikzlibrary{arrows.meta}
+\usepackage{grffile}
+\usetikzlibrary{plotmarks}
+\usepgfplotslibrary{patchplots}
+\tikzset{myarrow/.style={-{Triangle[length=3mm,width=1mm]}}}
+\tikzset{%
+  >={Latex[width=2mm,length=2mm]},
+  % Specifications for style of nodes:
+            base/.style = {rectangle, draw=black,
+                           minimum width=4cm, minimum height=1cm,
+                           text centered, font=\sffamily},
+            transparent/.style = {rectangle, draw=white,
+                           minimum width=1cm, minimum height=1cm,
+                           text centered, font=\sffamily},
+	  activityStarts/.style = {transparent, minimum width=0.25cm},
+	  AD/.style = {transparent},
+          process/.style = {base, minimum width=2.5cm, fill=white!15,
+                           font=\ttfamily},
+}
+\usepackage{anysize} 
+\marginsize{2cm}{2cm}{2cm}{2cm}
+\usepackage[utf8x]{inputenc} % No compatible with biblatex
+\usepackage{filecontents}
+
+%Color in sectionig
+\usepackage{sectsty}
+\chapterfont{\color{DodgerBlue4}}  % sets colour of chapters
+\sectionfont{\color{DodgerBlue4}}  % sets colour of sections
+\subsectionfont{\color{DodgerBlue4}}  % sets colour of subsections
+\subsubsectionfont{\color{DodgerBlue4}}  % sets colour of subsubsections
+
+\usepackage[titletoc]{appendix} % When the type is a book
+
+\usepackage{titlesec}
+\titleclass{\subsubparagraph}{straight}[\subparagraph]
+\newcounter{subsubparagraph}
+\renewcommand{\thesubsubparagraph}{\Alph{subsubparagraph}}
+\titleformat{\subsubparagraph}[runin]{\normalfont\normalsize\bfseries}{\thesubsubparagraph}{1em}{}
+\titlespacing*{\subsubparagraph} {\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+
+%Bibliography
+\usepackage[autostyle]{csquotes}% recommended in output (biblatex)
+
+\newif\ifchapterbib
+
+\chapterbibtrue
+
+\ifchapterbib
+        \usepackage[defernumbers=true,
+                backend=biber,
+%                 backend=bibtex8,
+                backref=true,
+%                 style=custom-numeric-comp, % Requiere descargar de Siarhei Khirevich's site
+%                style=apa,
+                style=alphabetic,
+%                style=numeric-comp,
+%                 style=ieee,
+%                 style=natbib,
+%                citestyle=authoryear,
+                hyperref=true,
+                natbib=true,
+                citereset=chapter,
+                maxcitenames=3,
+                maxbibnames=100,
+                refsection=chapter, %Bibliografia para cada capítulo
+                block=none]{biblatex}
+    \bibliography{/home/vicente/Dropbox/PhD/Thesis/content/bibliography.bib}
+\else
+    \usepackage[style=alphabetic,backend=biber]{biblatex}
+    \bibliography{/home/vicente/Dropbox/PhD/Thesis/content/bibliography.bib}
+\fi
+
+\usepackage[autostyle]{csquotes}% recommended in output (biblatex)
+\usepackage[]{biblatex}
+
+\DeclareBibliographyDriver{book}{%
+  \printfield{title}%
+  \newunit\newblock
+  \printnames{author}%
+  \newunit\newblock
+  \printlist{publisher}%
+  \newunit
+  \printfield{edition}%
+  \newunit
+  \printlist{location}%
+  \newunit
+  \printfield{year}%
+  \newunit
+  \printfield{pages}%
+  \finentry}
+  
+\DeclareBibliographyDriver{misc}{%
+  \printfield{title}%
+  \newunit\newblock
+  \printnames{author}%
+  \newunit\newblock
+  \printlist{publisher}%
+  \newunit
+  \printfield{year}%
+  \finentry}
+  
+\DeclareBibliographyDriver{thesis}{%
+  \printfield{title}%
+  \newunit\newblock
+  \printnames{author}%
+  \newunit\newblock
+  \printlist{publisher}%
+  \newunit
+  \printfield{year}%
+  \finentry}
+
+\DeclareBibliographyDriver{article}{%
+  \printfield{title}%
+  \newunit\newblock
+  \printnames{author}%
+  \newunit\newblock
+  \printlist{publisher}%
+  \newunit
+  \printlist{location}%
+  \newunit
+  \printfield{year}%
+  \finentry}
+
+\DeclareBibliographyDriver{manual}{%
+  \printfield{title}%
+  \newunit\newblock
+  \printnames{author}%
+  \newunit\newblock
+  \printlist{publisher}%
+  \newunit
+  \printfield{url}%
+  \finentry}
+  
+\DeclareBibliographyDriver{online}{%
+  \printfield{title}%
+  \newunit
+  \printfield{url}%
+  \finentry}
+
+\DeclareFieldFormat{edition}%
+                   {\ifinteger{#1}%
+                    {\mkbibordedition{#1}\addthinspace{}ed.}%
+                    {#1\isdot}}
+
+%Extra item icons
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\diamond$}
+\renewcommand{\labelitemiv}{$\triangleright$}
+
+%TOC sublevels
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+%Font NOTE: Commented are different cool fonts, try them
+\usepackage{avant}
+% \usepackage[sfdefault]{universalis}
+\usepackage[scaled]{helvet} % ss
+%\usepackage{nimbus}
+\usepackage[helvet]{sfmath} 
+% \usepackage{cmbright}
+\normalfont
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\usepackage{type1cm}
+%\usepackage[lighttt]{lmodern}
+% Using Courier font
+\usepackage{courier}
+\renewcommand{\ttdefault}{pcr}
+\DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
+
+% Pseudo-code
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+ 
+ %Head and foot page
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+% \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+% \rhead{}
+% \lhead{}
+\cfoot{}
+\chead{}
+\fancyhead[LE,RO]{\rightmark}
+\fancyhead[LO,RE]{\leftmark}
+\fancyfoot[RO,LE]{Page \hspace{0.3mm} \thepage \hspace{0.5mm} of \textbf{\pageref{LastPage}}}
+\fancyfoot[LO,RE]{John Doe}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headwidth}{17cm} 
+ 
+% Define commands to assure consistent treatment throughout document
+\newcommand{\eqnref}[1]{(\ref{#1})}
+\newcommand{\class}[1]{\texttt{#1}}
+\newcommand{\package}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\BibTeX}{\textsc{Bib}\TeX}
+
+%Metadata
+\hypersetup{
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfnewwindow=true,      % links in new window
+    pdftitle={PhD's thesis. Template},
+    pdfauthor={John Doe},
+    pdfcreator={John Doe},
+    pdfproducer={John Doe},
+    pdfsubject={Numeric},
+    pdfkeywords={Numeric},
+    bookmarksnumbered=true,     
+    bookmarksopen=true,         
+    bookmarksopenlevel=1,       
+    colorlinks=true, % false: boxed links; true: colored links           
+    pdfstartview=Fit,             
+%     pdfstartview={FitH},    % fits the width of the page to the window
+    pdfpagemode=UseOutlines,    % this is the option you were lookin for
+    pdfpagelayout=TwoPageRight,
+%     pdfpagelayout=TwoColumnRight,    
+    linkcolor=RoyalBlue4,          % color of internal links (change box color with linkbordercolor)
+    citecolor=DarkBlue,        % color of links to bibliography
+    filecolor=green,      % color of file links
+    urlcolor=blue,           % color of external links
+} 
+\pdfbookmark{\contentsname}{toc}
+
+\usepackage{microtype} 
+
+\usepackage{lipsum} %% NOTE: Only for template
+
+\begin{document}
+
+\input{content/glossaries}
+
+\begin{titlepage}
+    \begin{center}
+    \begin{tabular}{ccc}
+  \includegraphics[width=4cm,height=6cm,keepaspectratio]{logos/Logo_UPC.pdf} & \hspace{8cm}
+& \includegraphics[width=4cm,height=6cm,keepaspectratio]{logos/logo_CIMNE_footer.pdf} \\
+    \end{tabular}
+    \vfill
+    \Huge{Universitat Politècnica de Catalunya-CIMNE}
+    \Large{Programa de doctorado en Ingenieria Civil} \\
+    \Huge{\textbf{PhD's thesis}}
+    \vfill
+    \Huge{Template thesis}
+    \vfill
+    \Large{John Doe}
+    \vfill
+    \large{Director: Name}
+    \\
+    \large{Co-director: Second Name}
+    \vfill
+%     \begin{figure}[h]
+%     \begin{center}
+%     \includegraphics[width=0.4\textwidth]{introduction/signature.pdf}
+%     \includegraphics[width=0.4\textwidth]{introduction/signature2.pdf}
+%     \end{center}
+%     \end{figure}
+%     \vfill
+%     \Large{\today}
+  \end{center}
+\end{titlepage}
+
+\cleardoublepage
+\pdfbookmark{\contentsname}{toc}
+
+\chapter*{}
+
+\vspace{7.0cm}
+
+\large
+
+\inlinegraphics{quote1.pdf} \emph{Ce qui est simple est toujours faux. Ce qui ne l’est pas est inutilisable} \hspace{0.635\textwidth} \inlinegraphics{quote2.pdf}
+
+\normalsize
+
+\rule[0pt]{0.75\textwidth}{0.4pt}
+
+\emph{Paul Valéry (1871 – 1945 AD, French poet, essayist, and philosopher)}
+
+\newpage
+
+\textcolor{white}{Empty space}
+
+\vspace{10cm}
+
+\large
+
+\inlinegraphics{quote1.pdf} \emph{Essentially, all models are wrong, but some are useful} \hspace{0.51\textwidth} \inlinegraphics{quote2.pdf}
+
+\normalsize
+
+\rule[0pt]{0.675\textwidth}{0.4pt}
+
+\emph{Aphorism}, attributed to \emph{George E. P. Box (1919 – 2013 AD, British statistician)}
+
+\chapter*{}
+\begin{center}
+  \LARGE \textbf{Abstract} \normalsize
+\end{center}
+\begin{quotation}
+  \noindent \input{content/introduction/abstract}
+\end{quotation}
+\clearpage
+\begin{center}
+  \LARGE \textbf{Resumen} \normalsize
+\end{center}
+\begin{quotation}
+  \noindent \input{content/introduction/resumen}
+\end{quotation}
+\clearpage
+
+%%-----------Table of Contents------------------
+\tableofcontents{}
+
+\newpage
+
+\input{content/introduction/acknowledgement}
+
+\newpage
+
+\part{State of art}
+
+\input{content/introduction/introduction}
+
+\part{Conclusions}
+
+\input{content/conclusions/conclusions}
+
+\input{content/conclusions/futureworks}
+
+\addcontentsline{toc}{part}{Appendices}
+\appendix
+\appendixpage
+\noappendicestocpagenum
+\addappheadtotoc
+
+\input{content/appendix/appen}
+
+%%------------List of Tables----------------------
+\listoftables{}
+%%------------List of Figures----------------------
+\listoffigures{}
+
+%Print the glossary
+\chapter*{Glossaries}
+\addcontentsline{toc}{chapter}{Glossaries}
+\glsaddall
+\printglossaries
+% \printglossary[type=\acronymtype]
+% \printglossary
+% \printnoidxglossary[type=acronym,sort=letter]
+% \printnoidxglossary[type=symbols,sort=letter]
+
+\end{document}

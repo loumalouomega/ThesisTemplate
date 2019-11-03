@@ -221,12 +221,14 @@
                 citereset=chapter,
                 maxcitenames=3,
                 maxbibnames=100,
-                refsection=chapter, %Bibliografia para cada capítulo
+                refsection=chapter, %Bibliography for each chapter
                 block=none]{biblatex}
-    \bibliography{content/bibliography.bib}
+    %% NOTE: Update correctly the folder
+    \bibliography{/home/vicente/Trabajo/ThesisTemplate/content/bibliography.bib}
 \else
     \usepackage[style=alphabetic,backend=biber]{biblatex}
-    \bibliography{content/bibliography.bib}
+    %% NOTE: Update correctly the folder
+    \bibliography{/home/vicente/Trabajo/ThesisTemplate/content/bibliography.bib}
 \fi
 
 \usepackage[autostyle]{csquotes}% recommended in output (biblatex)

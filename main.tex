@@ -51,8 +51,9 @@
 %Highligh code
 \usepackage{parcolumns}
 \usepackage{textcomp}
+%% NOTE: FOR CODE-Commented
 % \usepackage{listings}
-\usepackage{minted}
+% \usepackage{minted}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{verylightgray}{gray}{0.85}
@@ -64,74 +65,74 @@
 
 \renewcommand{\theFancyVerbLine}{\sffamily \textcolor[rgb]{0.25,0.25,0.25}{\scriptsize \oldstylenums{\arabic{FancyVerbLine}}}}
 
-\newmintedfile[pythoncode]{python}{
-  % bgcolor=gray95,
-  % bgcolor=grey100,
-  fontfamily=helvetica, % tt, courier, helvetica
-  linenos=true,
-  fontsize=\scriptsize ,
-  numberblanklines=true,
-  numbersep=12pt,
-  numbersep=5pt,
-  gobble=0,
-  frame=leftline,
-  framerule=0.4pt,
-  framesep=2mm,
-  funcnamehighlighting=true,
-  tabsize=4,
-  obeytabs=false,
-  mathescape=false
-  samepage=false, %with this setting you can force the list to appear on the same page
-  showspaces=false,
-  showtabs =false,
-  texcl=false,
-}
-
-\newmintedfile[cppcode]{c++}{
-  % bgcolor=gray95,
-  % bgcolor=grey100,
-  fontfamily=helvetica, % tt, courier, helvetica
-  linenos=true,
-  fontsize=\scriptsize ,
-  numberblanklines=true,
-  numbersep=12pt,
-  numbersep=5pt,
-  gobble=0,
-  frame=leftline,
-  framerule=0.4pt,
-  framesep=2mm,
-  funcnamehighlighting=true,
-  tabsize=4,
-  obeytabs=false,
-  mathescape=false
-  samepage=false, %with this setting you can force the list to appear on the same page
-  showspaces=false,
-  showtabs =false,
-  texcl=false,
-}
-
-\newmintedfile[matlabcode]{matlab}{
-  % bgcolor=gray95,
-  % bgcolor=grey100,
-  fontfamily=helvetica, % tt, courier, helvetica
-  linenos=true,
-  fontsize=\scriptsize ,
-  numberblanklines=true,
-  numbersep=12pt,
-  numbersep=5pt,
-  gobble=0,
-  frame=leftline,
-  framerule=0.4pt,
-  framesep=2mm,
-  funcnamehighlighting=true,
-  tabsize=4,
-  obeytabs=false,
-  mathescape=false
-  samepage=false, %with this setting you can force the list to appear on the same page
-  showspaces=false,
-  showtabs =false,
-  texcl=false,
-}
+% \newmintedfile[pythoncode]{python}{
+%   % bgcolor=gray95,
+%   % bgcolor=grey100,
+%   fontfamily=helvetica, % tt, courier, helvetica
+%   linenos=true,
+%   fontsize=\scriptsize ,
+%   numberblanklines=true,
+%   numbersep=12pt,
+%   numbersep=5pt,
+%   gobble=0,
+%   frame=leftline,
+%   framerule=0.4pt,
+%   framesep=2mm,
+%   funcnamehighlighting=true,
+%   tabsize=4,
+%   obeytabs=false,
+%   mathescape=false
+%   samepage=false, %with this setting you can force the list to appear on the same page
+%   showspaces=false,
+%   showtabs =false,
+%   texcl=false,
+% }
+%
+% \newmintedfile[cppcode]{c++}{
+%   % bgcolor=gray95,
+%   % bgcolor=grey100,
+%   fontfamily=helvetica, % tt, courier, helvetica
+%   linenos=true,
+%   fontsize=\scriptsize ,
+%   numberblanklines=true,
+%   numbersep=12pt,
+%   numbersep=5pt,
+%   gobble=0,
+%   frame=leftline,
+%   framerule=0.4pt,
+%   framesep=2mm,
+%   funcnamehighlighting=true,
+%   tabsize=4,
+%   obeytabs=false,
+%   mathescape=false
+%   samepage=false, %with this setting you can force the list to appear on the same page
+%   showspaces=false,
+%   showtabs =false,
+%   texcl=false,
+% }
+%
+% \newmintedfile[matlabcode]{matlab}{
+%   % bgcolor=gray95,
+%   % bgcolor=grey100,
+%   fontfamily=helvetica, % tt, courier, helvetica
+%   linenos=true,
+%   fontsize=\scriptsize ,
+%   numberblanklines=true,
+%   numbersep=12pt,
+%   numbersep=5pt,
+%   gobble=0,
+%   frame=leftline,
+%   framerule=0.4pt,
+%   framesep=2mm,
+%   funcnamehighlighting=true,
+%   tabsize=4,
+%   obeytabs=false,
+%   mathescape=false
+%   samepage=false, %with this setting you can force the list to appear on the same page
+%   showspaces=false,
+%   showtabs =false,
+%   texcl=false,
+% }
 
 %% NOTE: Decomment this in order to add a draft watermark
 % % Use the following to make modification
@@ -222,10 +223,10 @@
                 maxbibnames=100,
                 refsection=chapter, %Bibliografia para cada capítulo
                 block=none]{biblatex}
-    \bibliography{/home/vicente/Dropbox/PhD/Thesis/content/bibliography.bib}
+    \bibliography{content/bibliography.bib}
 \else
     \usepackage[style=alphabetic,backend=biber]{biblatex}
-    \bibliography{/home/vicente/Dropbox/PhD/Thesis/content/bibliography.bib}
+    \bibliography{content/bibliography.bib}
 \fi
 
 \usepackage[autostyle]{csquotes}% recommended in output (biblatex)
@@ -398,10 +399,10 @@
     \begin{center}
     \begin{tabular}{ccc}
   \includegraphics[width=4cm,height=6cm,keepaspectratio]{logos/Logo_UPC.pdf} & \hspace{8cm}
-& \includegraphics[width=4cm,height=6cm,keepaspectratio]{logos/logo_CIMNE_footer.pdf} \\
+& \includegraphics[width=4cm,height=6cm,keepaspectratio]{logos/logo_ETSECCPB.jpeg} \\
     \end{tabular}
     \vfill
-    \Huge{Universitat Politècnica de Catalunya-CIMNE}
+    \LARGE{Universitat Politècnica de Catalunya-ETSECCPB} \\
     \Large{Programa de doctorado en Ingenieria Civil} \\
     \Huge{\textbf{PhD's thesis}}
     \vfill

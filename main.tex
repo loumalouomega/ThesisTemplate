@@ -275,11 +275,22 @@
   \newunit\newblock
   \printnames{author}%
   \newunit\newblock
+  \printtext{In: }\printfield{journaltitle}\printtext{.}
+  \iffieldundef{number}
+  {}
+  {\printtext{No. }\printfield{number}\printtext{\addcomma\addspace}}%
+  \iffieldundef{volume}
+  {}
+  {\printtext{Vol. }\printfield{volume}\printtext{\addcomma\addspace}}%
+  \printfield{year}%
+  \printtext{, }
+  \printfield{pages}
+  \newunit
   \printlist{publisher}%
   \newunit
   \printlist{location}%
   \newunit
-  \printfield{year}%
+  \printfield{doi}%
   \finentry}
 
 \DeclareBibliographyDriver{manual}{%

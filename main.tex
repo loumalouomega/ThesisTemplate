@@ -402,6 +402,21 @@
 
 \usepackage{microtype} 
 
+\usepackage{grfext}
+
+\ifx\mydraft Y
+  \usepackage{epstopdf-base}
+  \csname define@key\endcsname{Gin}{pdfcompress}[]{%
+    \epstopdfDeclareGraphicsRule{.pdf}{jpg}{.jpg}{%
+      convert -density 300 -background white -alpha background -alpha off -strip -interlace Plane -quality 85 ##1 \OutputFile
+%       convert -density 300 -background white -alpha background -alpha off -strip -interlace Plane -gaussian-blur 0.05 -quality 85 ##1 \OutputFile
+    }%
+  }
+\else
+  \PrependGraphicsExtensions*{.pdf}
+  \csname define@key\endcsname{Gin}{pdfcompress}[]{}
+\fi
+
 \usepackage{lipsum} %% NOTE: Only for template
 
 \begin{document}
